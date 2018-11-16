@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>
+        {{ 'APPLICATION.SETTINGS' | translate:param }}
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content class="settings" padding>
+      
+      <ion-card>
+ 
+          <ion-item>
+            <ion-label>{{ 'APPLICATION.LANGUAGE' | translate:param }}</ion-label>
+            <ion-select [(ngModel)]="language" (ngModelChange)="languageChanged($event)">
+              <ion-option value="en">English</ion-option>
+              <ion-option value="fr">French</ion-option>
+            </ion-select>
+          </ion-item>
+          
+      </ion-card>
+  
+  </ion-content>
+  

@@ -1,0 +1,161 @@
+{
+    "exams": [
+        {
+            "examid": 2,
+            "examname": "Developing ASP.NET MVC Web Applications",
+            "examtime": 1,
+            "noofquestions": 4,
+            "questions": [
+                {
+                    "questionid": 1,
+                    "sectionid": 1,
+                    "question": "You are building an ADO.NET Entity Framework application for RentBin.ca home rental application. You need to validate the conceptual schema definition language (CSDL), store schema definition language (SSDL), and mapping specification language (MSL) files. Which Entity Data Model tool can you use? (Each correct answer presents a complete solution. Choose all that apply.)",
+                    "questiontypeid": 1,
+                    "extra":"Conceptual schema definition language (CSDL) The conceptual model of the entity frameworkstore. Schema definition language (SSDL) The data storage aspect of the entity framework. Mapping specification language (MSL) The mapping between the CSDL and SSDL is handled",
+                    "resourcelinkes":[
+                        "https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/ef/edm-generator-edmgen-exe",
+                        "https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/ef/overview"
+                    ],
+                    "moreinformation":"",
+                    "answers": [
+                        {
+                            "answerid": "A",
+                            "text": "EDM Generator (EdmGen.exe)",
+                            "result": 1,
+                            "explanation": " The EdmGen.exe tool can be used with the ValidateArtifacts switch to validate a model."
+                        },
+                        {
+                            "answerid": "B",
+                            "text": "ADO.NET Entity Data Model Designer",
+                            "result": 1,
+                            "explanation": "The ADO.NET entity model designer can be used to validate models."
+                        },{
+                            "answerid": "C",
+                            "text": "Entity Data Model Wizard",
+                            "result": 0,
+                            "explanation": "The entity data model wizard may validate a model during creation but will not perform the validation after the fact."
+                        },
+                        {
+                            "answerid": "D",
+                            "text": "Update Model Wizard",
+                            "result": 0,
+                            "explanation": "The Update Model Wizard is intended to let you update an .edmx file after changes have been made to the underlying database. It is not intended to perform validation."
+                        }
+                    ]
+                },{
+                    "questionid": 2,
+                    "sectionid": 1,
+                    "question": "You are developing an ASP.NET Web API action method for F2J.com application.<br>The action method must return the following JSON in the message body.{ \" Name \":\" Fabrikam\", \"VendorNumber\": 9823, \"Items\": [\"Apples\", \"Oranges\"] }<br>You need to return an anonymous object that is serialized to JSON.<br>What should you do? (To answer, drag the appropriate code segments to the correct location or locations in the answer area. Each code segment may be used once, more than once, or not at all. You may need to drag the split bar between panes or scroll to view content.",
+                    "questiontypeid": 3,
+                    "extra":"Conceptual schema definition language (CSDL) The conceptual model of the entity frameworkstore. Schema definition language (SSDL) The data storage aspect of the entity framework. Mapping specification language (MSL) The mapping between the CSDL and SSDL is handled",
+                    "resources":[],
+                    "answers": [
+                        {
+                            "answerid": "A",
+                            "text": "\"Fabrikam\", VendorNumber = 9823,",
+                            "result": {"result": 1, "order":1 },
+                            "explanation": ""
+                        },
+                        {
+                            "answerid": "B",
+                            "text": "\"Fabrikam\", VendorNumber = \"9823\"",
+                            "result": {"result": 1, "order":1 },
+                            "explanation": ""
+                        },{
+                            "answerid": "C",
+                            "text": "new List<string> { \"Apples\", \"Oranges\"}",
+                            "result":  {"result": 0 },
+                            "explanation": ""
+                        },
+                        {
+                            "answerid": "D",
+                            "text": "new List<string> { \"Apples ,Oranges\"}",
+                            "result": {"result": 1, "order":2 },
+                            "explanation": ""
+                        },{
+                            "answerid": "E",
+                            "text": "return new List<string>",
+                            "result": {"result": 0 },
+                            "explanation": ""
+                        },
+                        {
+                            "answerid": "F",
+                            "text": "return new",
+                            "result": {"result": 1, "order":0 },
+                            "explanation": ""
+                        }
+                    ]
+                },
+                {
+                    "questionid": 3,
+                    "sectionid": 1,
+                    "question": "You are developing a library to support multiple ASP.NET MVC web applications on a shared server. The library provides implementations of security algorithms. If a problem with any of the security algorithms is discovered, a new version of the library must be created and deployed. Application downtime during the update must be minimized. You need to ensure that the new version of the library will be used by all applications as soon as possible. What should you do?",
+                    "questiontypeid": 2,
+                    "extra":"",
+                    "resources":["https://msdn.microsoft.com/en-us/library/ms973843.aspx",
+                    "https://blogs.msdn.microsoft.com/junfeng/2005/02/12/netmodule-vs-assembly/"],
+                    "answers": [
+                        {
+                            "answerid": "A",
+                            "text": "Build the web applications and include the security assembly as an embedded resource. When an update is needed, copy the new assembly to the bin directory for the application.",
+                            "result": 0,
+                            "explanation":"Assembly isn't shared then"
+                        },
+                        {
+                            "answerid": "B",
+                            "text": "Sign all assemblies in each application with the same key used to sign the security assembly. When an update is needed, create a new key pair and re-sign all assemblies.",
+                            "result": 0,
+                            "explanation":""
+                        },
+                        {
+                            "answerid": "C",
+                            "text": "Build the security assembly as a netmodule in a shared location. Use the assembly linker to merge the netmodule into the assemblies for the application. When an update is needed, update the netmodule in the shared location.",
+                            "result": 0,
+                            "explanation":"Dealing with mutiple assembles; You have to be very careful using this technique though. Since the code is statically included in all the assemblies, if you service the code, you will have to distribute a new version for every assembly. For this reason, if ever possible, you should look to ship the common code in a separate assembly."
+                        },
+                        {
+                            "answerid": "D",
+                            "text": "Install the security assembly in the Global Assembly Cache (GAC). When an update is needed, update the assembly in the GAC.",
+                            "result": 1,
+                            "explanation":"shared assembly may also be deployed to the Global Assembly Cache or to any URL as long as a codebase describing the location of the assembly is supplied in the application’s configuration file. The global assembly cache is a machine-wide store for assemblies that are used by more than one application. As described, deploying to the cache is not a requirement, but there are some advantages to doing so. For example, side-by-side storage of multiple versions of an assembly is provided automatically. Also, administrators can use the store to deploy bug fixes or security patches that they want every application on the machine to use."
+                        }
+                    ]
+                },
+                {
+                    "questionid": 4,
+                    "sectionid": 1,
+                    "question": "You need to make the “Distance” header of the table bold in the Views/RunLog/GetLog.cshtml view. Which code segment should you use?",
+                    "questiontypeid": 2,
+                    "extra":"The th is bold default from browser, not from html standard",
+                    "resources":"",
+                    "answers": [
+                        {
+                            "answerid": "A",
+                            "text": "table>tr{ font-weight: bold; }",
+                            "result": 0,
+                            "explanation":"This will make all rows font bold"
+                        },
+                        {
+                            "answerid": "B",
+                            "text": "table>th:last-child{ font-weight: bold; }",
+                            "result": 0,
+                            "explanation":"Distance is not in the last column"
+                        },
+                        {
+                            "answerid": "C",
+                            "text": "table+first-child{ font-weight: bold; }",
+                            "result": 0,
+                            "explanation":"Distance column is not in the first column"
+                        },
+                        {
+                            "answerid": "D",
+                            "text": "table>tr>th:nth-child (3) { font-weight: bold; }",
+                            "result": 1,
+                            "explanation":"We get the row with the header and third column which contains distance"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

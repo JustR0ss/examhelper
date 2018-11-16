@@ -1,0 +1,77 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Exam Prep for {{examInfo.examname}}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="question" padding>
+
+    <h2 class="center">Question {{questionNo}} of 60 - Time Left
+        <span [class.secondary]="!timerWarning" [class.danger]="timerWarning" class="timer">{{currentTime | tohhmmss}}
+        </span>
+    </h2>
+
+    <ion-card id="questionCard">
+        <div id="coverContainer">
+            <ion-card-header class="wraptext" [innerHTML]="currentQuestion.question">
+            </ion-card-header>
+
+            <ng-container *ngIf="questionType == 1">
+                <ion-list>
+                    <ion-item *ngFor="let answer of currentQuestion.answers; let i = index">
+                        <ion-label class="wraptext">
+                            <span [class.secondary]="submitted && answer.result == 1" [class.danger]="submitted && answer.result == 0">{{answer.text}}</span>
+                            <span class="explanation" *ngIf="submitted"><br>{{answer.explanation}}</span>
+                        </ion-label>
+                        <ion-checkbox [(ngModel)]="inputAnswers[i]" [disabled]="submitted ? 'disabled' : null"></ion-checkbox>
+                        <ion-icon *ngIf="submitted" name="{{inputAnswers[i] == 1 ? 'checkmark' : 'close'}}" [ngClass]="inputAnswers[i] == 1 ? 'secondary' : 'danger'"
+                            item-end></ion-icon>
+                    </ion-item>
+                </ion-list>
+            </ng-container>
+            <ng-container *ngIf="questionType == 2">
+                <ion-list radio-group  [(ngModel)]="radioSelection" >
+                    <ion-item *ngFor="let answer of currentQuestion.answers; let i = index">
+                        <ion-label class="wraptext">
+                            <span [class.secondary]="submitted && answer.result == 1" [class.danger]="submitted && answer.result == 0">{{answer.text}}</span>
+                            <span *ngIf="submitted"><br>{{answer.explanation}}</span>
+                        </ion-label>
+                        <ion-radio [disabled]="submitted" [value]="answer.answerid"  ngDefaultControl item-start></ion-radio>
+                        <ion-icon *ngIf="submitted" name="{{radioSelection == radioAnswer && radioAnswer == answer.answerid ? 'checkmark' : 'close'}}" 
+                        [ngClass]="radioSelection == radioAnswer && radioAnswer == answer.answerid ? 'secondary' : 'danger'"
+                            item-end></ion-icon>
+                    </ion-item>
+                </ion-list>
+            </ng-container>
+            <ng-container *ngIf="questionType == 3">
+            </ng-container>
+        </div>
+        <ion-grid id="ionGridButtons">
+            <ion-row>
+                <ion-col col-3><button ion-button color="light" *ngIf="questionNo != 1" (click)="previous()">Back</button></ion-col>
+                <ion-col col-3><button ion-button color="secondary">Mark Question</button></ion-col>
+                <ion-col col-3><button ion-button (click)="submit()" [attr.disabled]="submitted ? 'disabled': null">Submit</button></ion-col>
+                <ion-col col-3 *ngIf="questionNo != maxQuestions"><button ion-button color="light" (click)="next()">Next</button></ion-col>
+                <ion-col col-3 *ngIf="questionNo == maxQuestions"><button ion-button color="light" (click)="finish()">Finish</button></ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-12>
+                    <button ion-button color="light" class="full">
+                        Show more information
+                    </button>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-12>
+                    <button ion-button color="light" class="full">
+                        Show available resources
+                    </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+    </ion-card>
+
+</ion-content>

@@ -1,0 +1,6 @@
+{
+  "name": "$safeappid$",
+  "integrations": {},
+  "v2": true,
+  "typescript": true
+}

@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{ 'APPLICATION.CONTENT' | translate:param }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="home" padding>
+
+    <h2 class="center">{{ 'MICROSOFT.EXAMS' | translate:param }}</h2> 
+
+    <div class="center">
+        <p class="ionic-logo"></p>
+    </div>
+
+    <ion-card>
+        <ion-card-header>
+            {{ 'APPLICATION.MENU' | translate:param }}
+        </ion-card-header>
+
+        <ion-list>
+            
+            <div tabindex="0" role="button" detail-none (click)="expandItem(item)" 
+                ion-item *ngFor="let item of items" class="collapsibleDiv">
+                <ion-icon name="{{item.expanded ? 'arrow-dropdown' : 'arrow-dropright'}}"></ion-icon>
+                    {{ item.name | translate:param }}
+                    <expandable [expandHeight]="itemExpandHeight" [expanded]="item.expanded">
+                        <button ion-item (click)="begin(item.id)">
+                            {{ 'EXAM.STARTPREPEXAM' | translate:param }}
+                        </button>
+                        <button ion-item (click)="format(item.id)">
+                            {{ 'EXAM.EXAMFORMAT' | translate:param }}
+                        </button>
+                        <button ion-item (click)="changes(item.id)">
+                            {{ 'EXAM.EXAMCHANGES' | translate:param }}
+                        </button>
+                        <button ion-item (click)="resources(item.id)">
+                            {{ 'EXAM.RESOURCES' | translate:param }}
+                        </button>
+                    </expandable>
+            </div>
+            <button ion-item (click)="schedule()">
+                <ion-icon name="settings"></ion-icon>
+                {{ 'APPLICATION.SCHEDULEEXAM' | translate:param }}
+            </button>
+            <button ion-item (click)="settings()">
+                <ion-icon name="settings"></ion-icon>
+                {{ 'APPLICATION.SETTINGS' | translate:param }}
+            </button>
+            <button ion-item (click)="exit()">
+                <ion-icon name="exit"></ion-icon>
+                {{ 'APPLICATION.EXIT' | translate:param }}
+            </button>
+
+        </ion-list>
+        
+    </ion-card>
+
+</ion-content>

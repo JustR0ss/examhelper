@@ -1,0 +1,36 @@
+.secondary{
+    color:#32db64;
+}
+
+.danger{
+    color:#f53d3d;
+}
+
+.full{
+    width:100%;
+}
+
+.wraptext{
+    white-space: normal;
+}
+
+.timer{
+    margin-left: 15px;
+}
+
+.answerCover{
+    background-color: lightgrey;
+    opacity: .3;
+    width: 100%;
+    position: absolute;
+    top: 56px;
+    z-index: 2;
+}
+
+#coverContainer .checkbox-md.checkbox-disabled, .item-md.item-checkbox-disabled ion-label {
+    opacity: .7;
+}
+
+#coverContainer .radio-md.radio-disabled, .item-md.item-radio-disabled ion-label {
+    opacity: .7;
+}

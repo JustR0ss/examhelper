@@ -1,0 +1,15 @@
+{
+    "MICROSOFT.EXAMS": "Aide d'examen ms",
+    "APPLICATION.EXIT":"Demande de sortie",
+    "APPLICATION.SETTINGS":"Paramètres de l'application",
+    "APPLICATION.CONTENT":"Contenu de l'application",
+    "APPLICATION.LANGUAGE":"Définir la langue de l'application",
+    "APPLICATION.SCHEDULEEXAM":"Calendrier d'examen",
+    "APPLICATION.MENU":"Menu",
+    "EXAM.STARTPREPEXAM":"Commencer l'examen de préparation",
+    "EXAM.EXAMFORMAT":"Format de l'examen",
+    "EXAM.EXAMCHANGES":"Dernières modifications de l'examen",
+    "EXAM.70480":"Examen 70-480",
+    "EXAM.70486":"Examen 70-486",
+    "EXAM.RESOURCES":"Ressources d'examen connexes"
+}
