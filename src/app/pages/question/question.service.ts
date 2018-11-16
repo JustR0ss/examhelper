@@ -1,18 +1,23 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject,Observable } from 'rxjs';
-import { Question, Exams, ExamInfo } from '../../models/question.model';
+import { Question, Exams, ExamInfo, Exam } from '../../models/question.model';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class QuestionService {
 
   private quesionIndex = 0;
-  examQuestions: any;
+  examQuestions: Array<Exam>;
   currentQuestion = new BehaviorSubject<Question>(new Question);
   examInfo = new BehaviorSubject<ExamInfo>(new ExamInfo);
+  givenAnswers = [];
 
   constructor(private http: HttpClient){
 
+  }
+
+  addAnswer(num, answer) {
+    this.examQuestions[0].questions[this.quesionIndex].answered = answer;
   }
 
   getExam(examid): void {
@@ -48,4 +53,5 @@ export class QuestionService {
     this.quesionIndex--;
     this.currentQuestion.next(this.examQuestions[0].questions[this.quesionIndex]);
   }
+
 }

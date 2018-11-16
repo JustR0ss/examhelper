@@ -1,6 +1,6 @@
 import { Component, OnDestroy, AfterViewInit, DoCheck, IterableDiffers } from '@angular/core';
 
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController, Alert } from 'ionic-angular';
 import { QuestionService } from './question.service';
 import { Question, ExamInfo } from '../../models/question.model';
 import { Observable, Subscription } from 'rxjs';
@@ -8,12 +8,13 @@ import { Observable, Subscription } from 'rxjs';
 import { ModalController, ViewController } from 'ionic-angular';
 
 import * as $ from 'jquery'
+import { DragulaService } from 'ng2-dragula';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'question.html'
 })
-export class QuestionPage implements OnDestroy, DoCheck , AfterViewInit{
+export class QuestionPage implements OnDestroy , AfterViewInit{
 
   title = 'Question';
   questionNo = 1;
@@ -33,6 +34,9 @@ export class QuestionPage implements OnDestroy, DoCheck , AfterViewInit{
   collection: any;
   differ: any;
 
+  q1 = ['1','2'];
+  q2 = ['3'];
+
   questionDisplaySub: Subscription;
   questionExamInfoSub: Subscription;
   timer: Subscription;
@@ -40,7 +44,8 @@ export class QuestionPage implements OnDestroy, DoCheck , AfterViewInit{
 
   constructor(public navCtrl: NavController, private questionService: QuestionService
     , public navParams: NavParams, public modalCtrl: ModalController
-  , public loadingCtrl: LoadingController, private differs: IterableDiffers) {
+  , public loadingCtrl: LoadingController, private differs: IterableDiffers,
+  private dragulaService: DragulaService, private alertController: AlertController) {
     this.presentLoadingDefault('Loading Question');
     this.questionExamInfoSub = questionService.getExamInfo().subscribe((data) => {
       if (data.examtime != 0) {
@@ -53,18 +58,30 @@ export class QuestionPage implements OnDestroy, DoCheck , AfterViewInit{
     });
     this.questionDisplaySub = questionService.displayQuestion().subscribe((result: Question) => {
       this.currentQuestion = result;
+      this.questionType = this.currentQuestion.questiontypeid;
       this.inputAnswers = [];
+      if (result.answered) {
+        this.setAnswer(result.answered);
+        this.submitted = true;
+      }
       if (this.currentQuestion.answers) {
         if (this.loading != null) {
           this.loading.dismiss();
         }
-        this.questionType = this.currentQuestion.questiontypeid;
         if (this.questionType === 1) {
           this.currentQuestion.answers.forEach(element => {
             this.inputAnswers.push(false);
           });
         } else if (this.questionType === 2) {
           this.radioAnswer = this.currentQuestion.answers.find(x => x.result).answerid;
+        } else if (this.questionType === 3) {
+          dragulaService.drop.subscribe((val) => {
+            let alert = this.alertController.create({
+              title:"drop",
+              buttons: ['Ok']
+            });
+            alert.present();
+          });
         }
         
       }
@@ -100,6 +117,31 @@ export class QuestionPage implements OnDestroy, DoCheck , AfterViewInit{
 
   public submit() {
     this.submitted = true;
+    this.questionService.addAnswer(this.questionNo, this.getAnswer());
+  }
+
+  getAnswer(): any {
+    let retAnswer = null;
+    switch (this.questionType) {
+      case 1:
+      retAnswer = this.inputAnswers;
+      break;
+      case 2:
+      retAnswer = this.radioSelection;
+      break;
+    }
+    return retAnswer;
+  }
+
+  setAnswer(answer) {
+    switch (this.questionType) {
+      case 1:
+      this.inputAnswers = answer;
+      break;
+      case 2:
+      this.radioSelection = answer;
+      break;
+    }
   }
 
   begin() {

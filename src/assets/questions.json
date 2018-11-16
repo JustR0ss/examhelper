@@ -117,7 +117,7 @@
                             "answerid": "D",
                             "text": "Install the security assembly in the Global Assembly Cache (GAC). When an update is needed, update the assembly in the GAC.",
                             "result": 1,
-                            "explanation":"shared assembly may also be deployed to the Global Assembly Cache or to any URL as long as a codebase describing the location of the assembly is supplied in the application’s configuration file. The global assembly cache is a machine-wide store for assemblies that are used by more than one application. As described, deploying to the cache is not a requirement, but there are some advantages to doing so. For example, side-by-side storage of multiple versions of an assembly is provided automatically. Also, administrators can use the store to deploy bug fixes or security patches that they want every application on the machine to use."
+                            "explanation":"Shared assembly may also be deployed to the Global Assembly Cache or to any URL as long as a codebase describing the location of the assembly is supplied in the application’s configuration file. The global assembly cache is a machine-wide store for assemblies that are used by more than one application. As described, deploying to the cache is not a requirement, but there are some advantages to doing so. For example, side-by-side storage of multiple versions of an assembly is provided automatically. Also, administrators can use the store to deploy bug fixes or security patches that they want every application on the machine to use."
                         }
                     ]
                 },

@@ -19,6 +19,8 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { QuestionService } from './pages/question/question.service';
 
+import { DragulaModule, DragulaService, DragulaDirective } from 'ng2-dragula/ng2-dragula'
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -37,6 +39,7 @@ export function createTranslateLoader(http: HttpClient) {
     IonicModule.forRoot(MyApp),
     BrowserModule,
     HttpClientModule,
+    DragulaModule,
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,
@@ -55,7 +58,8 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   providers: [
     QuestionService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DragulaService
   ]
 })
 export class AppModule {}

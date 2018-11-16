@@ -9,6 +9,7 @@ export class Question {
     question: string;
     questiontypeid: number;
     answers: Array<Answer>
+    answered: any;
 }
 export class Exam {
     examid:number;

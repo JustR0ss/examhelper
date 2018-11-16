@@ -46,6 +46,20 @@
                 </ion-list>
             </ng-container>
             <ng-container *ngIf="questionType == 3">
+                <ion-row>
+                    <ion-col col-4>
+                        <ion-list [dragula]="'questionBag'" [dragulaModel]="currentQuestion.answers">
+                            <ng-container *ngFor="let answer of currentQuestion.answers; let i = index">
+                                <button ion-button color="light" >{{answer.text}}</button><br/>
+                            </ng-container>
+                        </ion-list>
+                    </ion-col>
+                    <ion-col col-8>
+                            <ion-list [dragula]="'questionBag'" [dragulaModel]="q2">
+                                    <button *ngFor="let item of q2">{{item}}</button>
+                                </ion-list>
+                    </ion-col>
+                </ion-row>
             </ng-container>
         </div>
         <ion-grid id="ionGridButtons">
